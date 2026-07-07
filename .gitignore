@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Node (only if you later add tooling)
+node_modules/
+npm-debug.log*
+
+# Netlify local
+.netlify/
