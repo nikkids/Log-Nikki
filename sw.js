@@ -2,7 +2,7 @@
    Cache-first strategy for full offline support (data saving).
    Bump CACHE_NAME on any asset change to invalidate old cache. */
 
-const CACHE_NAME = "moment-aware-v2";
+const CACHE_NAME = "log-nikki-v1";
 const ASSETS = [
   "./",
   "./index.html",

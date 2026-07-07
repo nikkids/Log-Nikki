@@ -1,7 +1,7 @@
 {
-  "name": "Moment Aware",
-  "short_name": "MomentAware",
-  "description": "One tap to ground yourself and log a moment. Build a daily streak, earn badges, reflect later.",
+  "name": "Log Nikki",
+  "short_name": "Log Nikki",
+  "description": "One tap to log the moment. Build a daily streak, track urges, earn badges, reflect later.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

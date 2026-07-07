@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>Moment Aware</title>
+<title>Log Nikki</title>
 <meta name="theme-color" content="#1c1917">
-<meta name="description" content="Ground yourself in the moment. One tap to log a hard moment, build a daily streak, reflect later.">
+<meta name="description" content="One tap to log the moment. Build a daily streak, track your urges, reflect later.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Moment Aware">
+<meta name="apple-mobile-web-app-title" content="Log Nikki">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
 <div id="app">
 
   <header class="app-header">
-    <h1>Moment&nbsp;Aware</h1>
+    <h1>Log&nbsp;Nikki</h1>
     <button id="settingsBtn" class="icon-btn" aria-label="Settings" title="Settings">
       <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.14,12.94a7.14,7.14,0,0,0,.06-.94,7.14,7.14,0,0,0-.06-.94l2.03-1.58a.5.5,0,0,0,.12-.64l-1.92-3.32a.5.5,0,0,0-.6-.22l-2.39.96a7.34,7.34,0,0,0-1.62-.94l-.36-2.54A.5.5,0,0,0,13.9,2h-3.8a.5.5,0,0,0-.5.42L9.24,4.96a7.34,7.34,0,0,0-1.62.94l-2.39-.96a.5.5,0,0,0-.6.22L2.71,8.48a.5.5,0,0,0,.12.64L4.86,10.7a7.14,7.14,0,0,0-.06.94,7.14,7.14,0,0,0,.06.94L2.83,14.16a.5.5,0,0,0-.12.64l1.92,3.32a.5.5,0,0,0,.6.22l2.39-.96a7.34,7.34,0,0,0,1.62.94l.36,2.54a.5.5,0,0,0,.5.42h3.8a.5.5,0,0,0,.5-.42l.36-2.54a7.34,7.34,0,0,0,1.62-.94l2.39.96a.5.5,0,0,0,.6-.22l1.92-3.32a.5.5,0,0,0-.12-.64ZM12,15.5A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
     </button>
@@ -34,6 +34,24 @@
       <div class="streak-text">
         <div class="streak-count"><span id="streakNum">0</span> <span class="streak-unit">day streak</span></div>
         <div class="streak-sub" id="streakSub">Show up today to start your streak.</div>
+      </div>
+    </div>
+
+    <!-- Split stats: check-ins vs urges -->
+    <div class="stat-row">
+      <div class="stat-pill stat-checkin">
+        <span class="stat-num" id="statCheckins">0</span>
+        <span class="stat-lbl">check-ins</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-pill stat-urge">
+        <span class="stat-num" id="statUrges">0</span>
+        <span class="stat-lbl">urges logged</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-pill stat-longest">
+        <span class="stat-num" id="statLongest">0</span>
+        <span class="stat-lbl">best streak</span>
       </div>
     </div>
 
@@ -54,9 +72,8 @@
   <main class="capture-area">
     <button id="bigButton" class="big-button" aria-label="Log this moment">
       <span class="big-button-label">I'M HERE</span>
-      <span class="big-button-sub">tap to log this moment</span>
+      <span class="big-button-sub">tap to log</span>
     </button>
-    <p class="hint">Feeling an urge or a wave of anxiety?<br>Tap once — the time &amp; date are saved instantly. Write down what happened whenever you're ready.</p>
   </main>
 
   <section class="toolbar">
@@ -64,7 +81,7 @@
   </section>
 
   <section class="timeline">
-    <h2 class="timeline-title">Your Moments</h2>
+    <h2 class="timeline-title">Your Log</h2>
     <div id="entryList" class="entry-list"></div>
     <p id="emptyState" class="empty-state hidden"></p>
   </section>
@@ -78,7 +95,7 @@
 <div id="editorModal" class="modal hidden">
   <div class="modal-sheet">
     <div class="modal-header">
-      <h3>Edit Moment</h3>
+      <h3 id="editorTitle">Log this moment</h3>
       <button id="closeEditor" class="icon-btn" aria-label="Close">
         <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19,6.41 17.59,5 12,10.59 6.41,5 5,6.41 10.59,12 5,17.59 6.41,19 12,13.41 17.59,19 19,17.59 13.41,12Z"/></svg>
       </button>
